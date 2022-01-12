@@ -154,7 +154,7 @@ describe('useCart Hook', () => {
     expect(mockedSetItemLocalStorage).not.toHaveBeenCalled();
   });
 
-  it.only('should be able to increase a product amount when adding a product that already exists on cart', async () => {
+  it('should be able to increase a product amount when adding a product that already exists on cart', async () => {
     const productId = 1;
 
     apiMock.onGet(`stock/${productId}`).reply(200, {

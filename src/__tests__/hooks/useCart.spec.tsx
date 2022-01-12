@@ -154,7 +154,7 @@ describe('useCart Hook', () => {
     expect(mockedSetItemLocalStorage).not.toHaveBeenCalled();
   });
 
-  it('should be able to increase a product amount when adding a product that already exists on cart', async () => {
+  it.only('should be able to increase a product amount when adding a product that already exists on cart', async () => {
     const productId = 1;
 
     apiMock.onGet(`stock/${productId}`).reply(200, {
@@ -199,6 +199,7 @@ describe('useCart Hook', () => {
         },
       ])
     );
+
     expect(mockedSetItemLocalStorage).toHaveBeenCalledWith(
       '@RocketShoes:cart',
       JSON.stringify(result.current.cart)
@@ -214,9 +215,10 @@ describe('useCart Hook', () => {
     });
     apiMock.onGet(`products/${productId}`).reply(200, {
       id: 2,
-      title: "Tênis VR Caminhada Confortável Detalhes Couro Masculino",
+      title: 'Tênis VR Caminhada Confortável Detalhes Couro Masculino',
       price: 139.9,
-      image: "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg"
+      image:
+        'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg',
     });
 
     const { result, waitFor } = renderHook(useCart, {
